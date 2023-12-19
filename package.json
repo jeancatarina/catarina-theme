@@ -1,14 +1,25 @@
 {
   "name": "catarina-theme",
-  "displayName": "catarina-theme",
+  "displayName": "Catarina Theme",
   "description": "another vscode theme",
-  "version": "0.0.1",
+  "icon": "images/logo.jpeg",
+  "publisher": "jeancatarina",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.85.0"
   },
   "categories": [
     "Themes"
   ],
+  "author": {
+    "name": "Jean Catarina",
+    "email": "jcc_ptb@hotmail.com",
+    "url": "https://linkedin.com/in/jeancatarina"
+  },
+  "repository": {
+    "url": "https://github.com/jeancatarina/catarina-theme",
+    "type": "git"
+  },
   "contributes": {
     "themes": [
       {
