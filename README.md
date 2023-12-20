@@ -1,6 +1,7 @@
 # Catarina Dark Theme
 
 another vscode theme...
+<img title="image" src="/images/image1.png">
 
 ## For more information
 
