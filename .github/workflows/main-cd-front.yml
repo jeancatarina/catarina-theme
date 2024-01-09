@@ -1,0 +1,47 @@
+name: Main CD Frontend
+
+on:
+  workflow_call:
+    inputs:
+      node_version:
+        type: string
+        default: "16"
+
+env:
+  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+  VSCE_TOKEN: "${{ secrets.VSCE_TOKEN }}"
+
+jobs:
+  build:
+    name: Build Yarn Artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ inputs.node_version }}
+
+      - name: Install dependencies
+        run: npm install -g vsce
+
+      - name: Visual code generate package
+        run: vsce package
+
+  deploy:
+    needs: [build]
+    name: Deploy to visual studio marketplace
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install -g vsce
+
+      - name: VSCE publish
+        env:
+          VSCE_PAT: ${{ env.VSCE_TOKEN }}
+        run: vsce publish --pat $VSCE_PAT
